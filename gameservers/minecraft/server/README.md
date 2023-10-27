@@ -1,0 +1,1 @@
+git clone your game server stuff

@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ubuntu:
+    build:
+      context: .
+      args:
+        UID: ${HOST_UID}
+        GID: ${HOST_GID}
+    image: minecraft:latest
+    environment:
+        EULA: "TRUE"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./server:/home/gameadmin/server/:rw
+    ports:
+      - 3074:3074
+      - 3075:3075
+      - 3076:3076
+    command: ["sleep","infinity"]
