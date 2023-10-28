@@ -28,6 +28,7 @@ RUN apt install lib32gcc-s1 steamcmd -y
 # Install basic
 RUN apt install ansible wget tar unzip git python3.11 vim netcat -y
 
+
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
     apt install -y sudo && \
@@ -44,3 +45,5 @@ WORKDIR /home/gameadmin/server
 # Copy files into the container and set the appropriate permissions
 COPY --chown=gameadmin:gameadmin . /home/gameadmin/server
 RUN chmod -R 755 /home/gameadmin/server
+RUN touch /home/gameadmin/.bashrc
+RUN echo "alias steamcmd=/usr/games/steamcmd" >> /home/gameadmin/.bashrc
