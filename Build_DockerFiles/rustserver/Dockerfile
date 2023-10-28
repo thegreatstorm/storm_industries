@@ -19,10 +19,10 @@ RUN dpkg --add-architecture i386
 RUN apt update -y
 
 # Install steamcmd
-RUN apt install lib32gcc1 steamcmd -y
+RUN apt install lib32gcc1 lib32stdc++6 steamcmd lib32z1 -y
 
 # Install basic
-RUN apt install ansible wget tar unzip git python3.11 vim netcat lib32gcc1 lib32stdc++6 steamcmd lib32z1 -y
+RUN apt install ansible wget tar unzip git python3.11 vim netcat -y
 
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
