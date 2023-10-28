@@ -13,7 +13,7 @@ RUN apt update -y
 RUN dpkg --add-architecture i386
 
 # Install basic
-RUN apt install ansible wget tar unzip git openjdk-17-jre python3.11 vim netcat lib32gcc1 lib32stdc++6 steamcmd lib32z1 -y
+RUN apt install ansible wget tar unzip git python3.11 vim netcat lib32gcc1 lib32stdc++6 steamcmd lib32z1 -y
 
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
