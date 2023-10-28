@@ -9,8 +9,17 @@ ARG GID
 # Update repository
 RUN apt update -y
 
+# Install steam requirements
+RUN apt install software-properties-common -y
+RUN add-apt-repository multiverse
+
 # Install arhitecture
 RUN dpkg --add-architecture i386
+
+RUN apt update -y
+
+# Install steamcmd
+RUN apt install lib32gcc1 steamcmd -y
 
 # Install basic
 RUN apt install ansible wget tar unzip git python3.11 vim netcat lib32gcc1 lib32stdc++6 steamcmd lib32z1 -y
