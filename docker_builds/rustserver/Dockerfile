@@ -46,4 +46,4 @@ WORKDIR /home/gameadmin/server
 COPY --chown=gameadmin:gameadmin . /home/gameadmin/server
 RUN chmod -R 755 /home/gameadmin/server
 RUN touch /home/gameadmin/.bashrc
-RUN echo "alias steamcmd=/usr/games/steamcmd" >> /home/gameadmin/.bashrc
+RUN echo "alias steamcmd=\"/usr/games/steamcmd\"" >> /home/gameadmin/.bashrc
