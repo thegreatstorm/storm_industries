@@ -6,7 +6,7 @@ services:
       args:
         UID: ${HOST_UID}
         GID: ${HOST_GID}
-    image: rust:latest
+    image: rustserver:latest
     environment:
         EULA: "TRUE"
     tty: true
