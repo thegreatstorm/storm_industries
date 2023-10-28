@@ -1,1 +1,1 @@
-git clone your game server stuff
+This is where you put your minecraft server directory

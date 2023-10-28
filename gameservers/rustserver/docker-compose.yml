@@ -1,0 +1,22 @@
+version: '3'
+services:
+  ubuntu:
+    build:
+      context: .
+      args:
+        UID: ${HOST_UID}
+        GID: ${HOST_GID}
+    image: rust:latest
+    environment:
+        EULA: "TRUE"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./server:/home/gameadmin/server/:rw
+    ports:
+      - 28015:28015/tcp
+      - 28016:28016/tcp
+      - 28015:28015/udp
+      - 28016:28016/udp
+      - 28082:28082/tcp
+    command: ["sleep","infinity"]
