@@ -18,8 +18,12 @@ RUN dpkg --add-architecture i386
 
 RUN apt update -y
 
+# Steamcmd bypass install
+RUN echo steam steam/question select "I AGREE" | sudo debconf-set-selections
+RUN echo steam steam/license note '' | sudo debconf-set-selections
+
 # Install steamcmd
-RUN apt install lib32gcc-s1 lib32stdc++6 steamcmd lib32z1 -y
+RUN apt install lib32gcc-s1 steamcmd -y
 
 # Install basic
 RUN apt install ansible wget tar unzip git python3.11 vim netcat  -y
