@@ -12,6 +12,9 @@ RUN apt update -y
 # Install arhitecture
 RUN dpkg --add-architecture i386
 
+
+RUN apt update -y
+
 # Install basic
 RUN apt install ansible wget tar unzip git openjdk-17-jre python3.11 vim pip -y
 
