@@ -17,4 +17,5 @@ services:
       - 3074:3074
       - 3075:3075
       - 3076:3076
+      - 8123:8123
     command: ["sleep","infinity"]
