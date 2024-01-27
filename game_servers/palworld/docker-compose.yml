@@ -15,7 +15,5 @@ services:
       - ./server:/home/gameadmin/server/:rw
     ports:
       - 8211:8211/tcp
-      - 8211:8211/udp
       - 25575:25575/tcp
-      - 25575:25575/udp
     command: ["sleep","infinity"]
