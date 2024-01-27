@@ -1,0 +1,19 @@
+version: '3'
+services:
+  ubuntu:
+    build:
+      context: .
+      args:
+        UID: ${HOST_UID}
+        GID: ${HOST_GID}
+    image: palworld:latest
+    environment:
+        EULA: "TRUE"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./server:/home/gameadmin/server/:rw
+    ports:
+      - 8211:8211/tcp
+      - 8211:8211/udp
+    command: ["sleep","infinity"]
