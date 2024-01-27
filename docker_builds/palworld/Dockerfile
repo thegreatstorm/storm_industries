@@ -46,4 +46,7 @@ WORKDIR /home/gameadmin/server
 COPY --chown=gameadmin:gameadmin . /home/gameadmin/server
 RUN chmod -R 755 /home/gameadmin/server
 RUN touch /home/gameadmin/.bashrc
+RUN mkdir -p /home/gameadmin/.steam/sdk64/
+RUN steamcmd +login anonymous +app_update 1007 +quit
+RUN cp /home/gameadmin/Steam/steamapps/common/Steamworks\ SDK\ Redist/linux64/steamclient.so /home/gameadmin/.steam/sdk64/
 RUN echo "alias steamcmd=\"/usr/games/steamcmd\"" >> /home/gameadmin/.bashrc
