@@ -1,0 +1,2 @@
+What I found is that if you try using first user which will have 1000 for uid and gid it errors out when running build_image.sh
+If you try changing to 1001, but not running it on that user you will get permission issues.
