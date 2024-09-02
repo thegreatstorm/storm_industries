@@ -5,4 +5,4 @@ export HOST_GID=$(id -g)
 
 
 # Build the Docker image
-docker build --build-arg UID=$HOST_UID --build-arg GID=$HOST_GID -t minecraft .
+docker build --build-arg UID=$HOST_UID --build-arg GID=$HOST_GID --build-arg USER=$USER -t minecraft .

@@ -12,7 +12,7 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - ./server:/home/gameadmin/server/:rw
+      - ./server:/home/${USER}/server/:rw
     ports:
       - 3074:3074
       - 3075:3075
