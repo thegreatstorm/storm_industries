@@ -29,7 +29,7 @@ RUN apt update && \
 # Set the non-root user as the default user
 USER $USER
 RUN mkdir -p /home/$USER/server/venv
-RUN python3 -m venv /home/$USER/server/venv
+RUN python3 -m venv /home/$USER/venv
 
 
 # Set the working directory
