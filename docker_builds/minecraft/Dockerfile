@@ -17,7 +17,7 @@ RUN dpkg --add-architecture i386
 RUN apt update -y
 
 # Install basic
-RUN apt install ansible wget tar unzip git openjdk-17-jre python3 python3-venv vim pip -y
+RUN apt install ansible wget tar unzip git openjdk-21-jre python3 python3-venv vim pip -y
 
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
