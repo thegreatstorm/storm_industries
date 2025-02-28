@@ -4,4 +4,4 @@ export HOST_GID=$(id -g)
 
 
 # Build the Docker image
-docker build --build-arg UID=$HOST_UID --build-arg GID=$HOST_GID -t rustserver .
+docker build --build-arg UID=$HOST_UID --build-arg GID=$HOST_GID -t quake_live .
