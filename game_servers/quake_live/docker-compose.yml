@@ -1,0 +1,22 @@
+services:
+  ubuntu:
+    build:
+      context: .
+      args:
+        UID: ${HOST_UID}
+        GID: ${HOST_GID}
+    image: quake_live:latest
+    environment:
+        EULA: "TRUE"
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./server:/home/gameadmin/server/:rw
+    ports:
+      - 27950:27950/tcp
+      - 27960:27960/tcp
+      - 27952:27952/tcp
+      - 27950:27950/udp
+      - 27960:27960/udp
+      - 27952:27952/udp
+    command: ["sleep","infinity"]
