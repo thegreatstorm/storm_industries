@@ -5,6 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ARG UID
 ARG GID
+ARG USER
 
 # Update repository
 RUN apt update -y
@@ -28,7 +29,6 @@ RUN apt install lib32gcc-s1 steamcmd -y
 # Install basic
 RUN apt install ansible wget tar unzip git vim pip -y
 
-
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
     apt install -y sudo && \
@@ -38,16 +38,21 @@ RUN apt update && \
 
 # Set the non-root user as the default user
 USER $USER
-WORKDIR /home/$USER/server
+RUN mkdir -p /home/$USER/server/venv
 
-# Expose necessary ports
-# EXPOSE 27960/udp 27950/udp 27952/udp
+# Set the working directory
+WORKDIR /home/$USER/server
 
 # Copy files into the container and set the appropriate permissions
 COPY --chown=$USER:$USER . /home/$USER/server
 RUN chmod -R 755 /home/$USER/server
+
+# Copy files into the container and set the appropriate permissions
 RUN touch /home/$USER/.bashrc
 RUN echo "alias steamcmd=\"/usr/games/steamcmd\"" >> /home/$USER/.bashrc
+
+# Expose necessary ports
+# EXPOSE 27960/udp 27950/udp 27952/udp
 
 # Install Quake Live Dedicated Server
 #RUN /usr/games/steamcmd +login anonymous +force_install_dir ~/server +app_update 349090 validate +quit
