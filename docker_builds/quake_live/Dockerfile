@@ -40,9 +40,6 @@ RUN apt update && \
 USER gameadmin
 WORKDIR /home/gameadmin/server
 
-the working directory
-WORKDIR /home/quake/server
-
 # Expose necessary ports
 # EXPOSE 27960/udp 27950/udp 27952/udp
 
