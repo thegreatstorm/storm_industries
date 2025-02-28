@@ -38,9 +38,16 @@ RUN apt update && \
 
 # Set the non-root user as the default user
 USER gameadmin
+WORKDIR /home/gameadmin/server
+
+# Install Quake Live Dedicated Server
+RUN steamcmd +login anonymous +force_install_dir ~/server +app_update 349090 validate +quit
 
 # Set the working directory
-WORKDIR /home/gameadmin/server
+WORKDIR /home/quake/server
+
+# Expose necessary ports
+# EXPOSE 27960/udp 27950/udp 27952/udp
 
 # Copy files into the container and set the appropriate permissions
 COPY --chown=gameadmin:gameadmin . /home/gameadmin/server
