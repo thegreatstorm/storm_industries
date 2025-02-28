@@ -40,10 +40,7 @@ RUN apt update && \
 USER gameadmin
 WORKDIR /home/gameadmin/server
 
-# Install Quake Live Dedicated Server
-RUN steamcmd +login anonymous +force_install_dir ~/server +app_update 349090 validate +quit
-
-# Set the working directory
+the working directory
 WORKDIR /home/quake/server
 
 # Expose necessary ports
@@ -54,3 +51,6 @@ COPY --chown=gameadmin:gameadmin . /home/gameadmin/server
 RUN chmod -R 755 /home/gameadmin/server
 RUN touch /home/gameadmin/.bashrc
 RUN echo "alias steamcmd=\"/usr/games/steamcmd\"" >> /home/gameadmin/.bashrc
+RUN alias steamcmd="/usr/games/steamcmd"
+# Install Quake Live Dedicated Server
+RUN steamcmd +login anonymous +force_install_dir ~/server +app_update 349090 validate +quit
