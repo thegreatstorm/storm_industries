@@ -27,7 +27,7 @@ RUN echo steam steam/license note '' | debconf-set-selections
 RUN apt install lib32gcc-s1 steamcmd -y
 
 # Install basic
-RUN apt install ansible wget tar unzip git vim python3.12-venv pip -y
+RUN apt install ansible wget tar unzip git python3.12-venv pip -y
 
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
