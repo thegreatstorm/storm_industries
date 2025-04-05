@@ -12,7 +12,7 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - ./server:/home/gameadmin/server/:rw
+      - ./server:/home/${USER}/server/:rw
     ports:
       - 25565:25565/udp
       - 25575:25575/tcp
