@@ -27,7 +27,7 @@ RUN echo steam steam/license note '' | debconf-set-selections
 RUN apt install lib32gcc-s1 steamcmd -y
 
 # Install basic
-RUN apt install ansible wget tar unzip git python3.12-venv pip -y
+RUN apt install ansible wget tar unzip git pip -y
 
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
@@ -39,7 +39,7 @@ RUN apt update && \
 # Set the non-root user as the default user
 USER $USER
 RUN mkdir -p /home/$USER/server/venv
-RUN python3 -m venv /home/$USER/venv
+#RUN python3 -m venv /home/$USER/venv
 
 
 # Set the working directory
