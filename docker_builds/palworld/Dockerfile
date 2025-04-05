@@ -26,27 +26,24 @@ RUN echo steam steam/license note '' | debconf-set-selections
 RUN apt install lib32gcc-s1 steamcmd -y
 
 # Install basic
-RUN apt install ansible wget tar unzip git python3.11 vim netcat pip -y
-
+RUN apt install ansible wget tar unzip git python3 python3-venv vim netcat pip -y
 
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \
     apt install -y sudo && \
-    addgroup --gid $GID gameadmin && \
-    adduser --uid $UID --gid $GID --disabled-password --gecos "" gameadmin && \
+    addgroup --gid $GID $USER && \
+    adduser --uid $UID --gid $GID --disabled-password --gecos "" $USER && \
     echo 'nonroot ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Set the non-root user as the default user
-USER gameadmin
+USER $USER
+RUN mkdir -p /home/$USER/server/venv
+RUN python3 -m venv /home/$USER/venv
+
 
 # Set the working directory
-WORKDIR /home/gameadmin/server
+WORKDIR /home/$USER/server
 
 # Copy files into the container and set the appropriate permissions
-COPY --chown=gameadmin:gameadmin . /home/gameadmin/server
-RUN chmod -R 755 /home/gameadmin/server
-RUN touch /home/gameadmin/.bashrc
-RUN mkdir -p /home/gameadmin/.steam/sdk64/
-RUN /usr/games/steamcmd +login anonymous +app_update 1007 +quit
-RUN cp /home/gameadmin/Steam/steamapps/common/Steamworks\ SDK\ Redist/linux64/steamclient.so /home/gameadmin/.steam/sdk64/
-RUN echo "alias steamcmd=\"/usr/games/steamcmd\"" >> /home/gameadmin/.bashrc
+COPY --chown=$USER:$USER . /home/$USER/server
+RUN chmod -R 755 /home/$USER/server
