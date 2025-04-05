@@ -5,6 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ARG UID
 ARG GID
+ARG USER
 
 # Update repository
 RUN apt update -y
