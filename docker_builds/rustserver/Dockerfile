@@ -13,6 +13,9 @@ RUN apt update -y
 RUN apt install software-properties-common -y
 RUN add-apt-repository multiverse
 
+# Ansible workaround
+RUN apt-add-repository ppa:ansible/ansible
+
 # Install arhitecture
 RUN dpkg --add-architecture i386
 

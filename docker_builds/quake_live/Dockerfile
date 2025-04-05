@@ -14,6 +14,9 @@ RUN apt update -y
 RUN apt install software-properties-common -y
 RUN add-apt-repository multiverse
 
+# Ansible workaround
+RUN apt-add-repository ppa:ansible/ansible
+
 # Install arhitecture
 RUN dpkg --add-architecture i386
 
@@ -27,7 +30,7 @@ RUN echo steam steam/license note '' | debconf-set-selections
 RUN apt install lib32gcc-s1 steamcmd -y
 
 # Install basic
-RUN apt install ansible wget tar unzip git vim pip -y
+RUN apt install wget tar unzip git python3 python3-venv pip ansible -y
 
 # Update the package list, install sudo, create a non-root user, and grant password-less sudo permissions
 RUN apt update && \

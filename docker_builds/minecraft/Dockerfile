@@ -13,6 +13,8 @@ RUN apt update -y
 # Install arhitecture
 RUN dpkg --add-architecture i386
 
+# Ansible workaround
+RUN apt-add-repository ppa:ansible/ansible
 
 RUN apt update -y
 
